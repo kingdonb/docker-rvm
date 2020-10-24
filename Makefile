@@ -24,3 +24,6 @@ push: push-tag push-latest
 
 support:
 	$(MAKE) -C docker-rvm-support supported
+
+unsupported:
+	$(MAKE) -C docker-rvm-support unsupported

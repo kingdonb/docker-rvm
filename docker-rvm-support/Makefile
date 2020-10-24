@@ -1,7 +1,7 @@
 .PHONY: build tag-latest push-tag push-latest push
 .PHONY: build-release push-release release push-unsupported-release build-oci8
 .PHONY: build-unsupported tag-latest-unsupported push-tag-unsupported push-latest-unsupported
-.PHONY: build-release-oci8 build-unsupported-oci8 push-all-oci8
+.PHONY: build-release-oci8 build-unsupported-oci8 push-all-oci8 unsupported
 .PHONY: build-release-all push-all release-all push-oci8 push-oci8-unsupported supported
 
 ISO_DATE_TAG := $(shell date +%Y%m%d)
@@ -9,6 +9,8 @@ ISO_DATE_TAG := $(shell date +%Y%m%d)
 all: build build-release build-release-oci8 push-latest release-all
 
 supported: build-release build-release-oci8 tag-latest push-tag push-oci8 push-latest
+
+unsupported: build-unsupported build-unsupported-oci8 tag-latest-unsupported push-tag-unsupported push-oci8-unsupported push-latest-unsupported
 
 release-all: build-release-all push-all
 

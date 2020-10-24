@@ -1,5 +1,5 @@
 ARG RVM_RUBY_VERSIONS="2.4.10 2.3.8 2.2.10 2.1.10"
-FROM kingdonb/docker-rvm:20201024
+FROM kingdonb/docker-rvm:20201024-legacy
 LABEL maintainer="Kingdon Barrett <kingdon.b@nd.edu>"
 ENV APPDIR="/home/${RVM_USER}/app"
 

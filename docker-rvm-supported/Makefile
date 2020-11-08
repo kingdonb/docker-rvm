@@ -7,7 +7,7 @@ all: build build-release tag-latest push-latest push-tag
 push-release: push-tag push-latest
 
 build:
-	docker build -f Dockerfile.oci8 -t kingdonb/rvm-supported:latest .
+	docker build --no-cache --progress=plain -f Dockerfile.oci8 -t kingdonb/rvm-supported:latest .
 
 build-release:
 	docker build -f Dockerfile.oci8 -t kingdonb/rvm-supported:$(GIT_SHA_TAG) .

@@ -1,51 +1,3 @@
-GIT
-  remote: git@bitbucket.org:nd-oit/nd-application-workflow.git
-  revision: 047d0123e5a353ba7ae1f755424f0f6bd0d3ead3
-  specs:
-    nd_application_workflow (0.5.0)
-      foundation-rails
-      jquery-rails
-      rails (~> 5.0)
-      workflow
-
-GIT
-  remote: git@bitbucket.org:nd-oit/nd-employee-lookup-gem.git
-  revision: ad5020e004539efd0f97a2281594ef8b2635d6cb
-  specs:
-    nd_employee_lookup (0.5.1)
-      foundation-rails (~> 5.0)
-      jquery-rails (~> 4.2)
-      jquery-ui-rails (~> 6.0)
-      rails
-
-GIT
-  remote: git@bitbucket.org:nd-oit/nd-job-lookup-gem.git
-  revision: 1913b331a049eed6879161850ec49168027721f7
-  specs:
-    nd_job_lookup (0.5.0)
-      foundation-rails
-      jquery-rails (~> 4.2)
-      nd_employee_lookup (~> 0.5.0)
-      rails
-      slim
-      slim-rails
-
-GIT
-  remote: git@github.com:kingdonb/nd_foundation.git
-  revision: abadca978503fc0f0ddecdfc4981e716dcba91c0
-  specs:
-    nd_foundation (0.1.0)
-      foundation-rails (~> 5.4.3.0)
-      rails (>= 3.2.18)
-      sass-rails (~> 5.0.0)
-
-GIT
-  remote: git@github.com:kingdonb/webservices.git
-  revision: 30ad1b22640bd0cef3709c82b69abfd3db6ee7f1
-  specs:
-    webservices (0.0.58)
-      3scale_client (~> 2.11)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -899,10 +851,6 @@ DEPENDENCIES
   mocha
   multi_test
   multi_xml
-  nd_application_workflow!
-  nd_employee_lookup!
-  nd_foundation!
-  nd_job_lookup!
   net-ldap
   netrc
   newrelic_rpm
@@ -1021,7 +969,6 @@ DEPENDENCIES
   web-console
   webdrivers
   webpacker
-  webservices!
   websocket-driver
   websocket-extensions
   whenever

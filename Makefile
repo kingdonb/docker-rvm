@@ -1,11 +1,13 @@
 .PHONY: build tag-latest push-tag push-latest push support check
-.PHONY: legacy build-legacy push-legacy unsupported
+.PHONY: legacy build-legacy push-legacy unsupported local-only
 
 ISO_DATE_TAG := $(shell date +%Y%m%d)
 
 all: build push support
 
 legacy: build-legacy push-legacy unsupported
+
+local-only: tag-latest support
 
 build-legacy:
 	docker build --no-cache -t kingdonb/docker-rvm:$(ISO_DATE_TAG)-legacy -f Dockerfile.legacy .

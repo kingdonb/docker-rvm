@@ -22,7 +22,7 @@ RUN echo "America/New_York" > /etc/timezone
 RUN unlink /etc/localtime
 RUN dpkg-reconfigure -f noninteractive tzdata
 
-COPY ora-support/*.zip /
+COPY ora-support/*-19.8.*.zip /
 COPY ora-support/tns /etc/oracle
 RUN set -ex \
   && mkdir -p /opt/oracle \

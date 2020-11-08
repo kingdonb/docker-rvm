@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 source /etc/profile.d/rvm.sh
+echo 'gem: --no-document' > ~/.gemrc
 
 for ver in $RUBY_VERSIONS; do
   rvm $ver@global do gem update --system

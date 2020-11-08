@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:experimental
-ARG RVM_RUBY_VERSIONS="2.7.1"
-FROM kingdonb/docker-rvm-support:20200912-oci8 as test-base
+ARG RVM_RUBY_VERSIONS="2.7.2"
+FROM kingdonb/docker-rvm-support:20201108-oci8 as test-base
 LABEL maintainer="Kingdon Barrett <kingdon.b@nd.edu>"
 ENV APPDIR="/home/${RVM_USER}/app"
 
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 USER ${RVM_USER}
-ENV RUBY=2.7.1
+ENV RUBY=2.7.2
 RUN  echo 'gem: --no-document' > /home/${RVM_USER}/.gemrc && rvm ${RUBY} do gem update --system
 # USER root
 # ENTRYPOINT ["/sbin/my_init", "--"]

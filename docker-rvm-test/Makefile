@@ -26,13 +26,13 @@ bundle-install:
 	docker run -it --name bundle-install \
 	  -v $(shell pwd)/Gemfile:/home/rvm/app/Gemfile \
 	  -v $(shell pwd)/Gemfile.lock:/home/rvm/app/Gemfile.lock \
-	  --rm kingdonb/docker-rvm:$(ISO_DATE_TAG)-test bash --login -c 'rvm 2.7.1 do bundle install'
+	  --rm kingdonb/docker-rvm:$(ISO_DATE_TAG)-test bash --login -c 'rvm 2.7.2 do bundle install'
 
 bundle-update:
 	docker run -it --name bundle-install \
 	  -v $(shell pwd)/Gemfile:/home/rvm/app/Gemfile \
           -v $(shell pwd)/Gemfile.lock:/home/rvm/app/Gemfile.lock \
-	  --rm kingdonb/docker-rvm:$(ISO_DATE_TAG)-test bash --login -c 'rvm 2.7.1 do bundle update'
+	  --rm kingdonb/docker-rvm:$(ISO_DATE_TAG)-test bash --login -c 'rvm 2.7.2 do bundle update'
 
 tag-latest: test
 	docker tag kingdonb/docker-rvm:$(ISO_DATE_TAG)-test-base kingdonb/docker-rvm:test-base

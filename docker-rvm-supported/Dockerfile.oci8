@@ -5,4 +5,4 @@ ENV APPDIR="/home/${RVM_USER}/app"
 # include the ruby-version and Gemfile for bundle install
 ADD Gemfile Gemfile.lock jenkins ${APPDIR}/
 ENV RUBY_VERSIONS="${RVM_RUBY_VERSIONS}"
-RUN ${APPDIR}/bundle-install-all-versions.sh
+RUN RUBY_VERSIONS="${RUBY_VERSIONS}" ${APPDIR}/bundle-install-all-versions.sh

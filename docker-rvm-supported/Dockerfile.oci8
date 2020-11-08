@@ -4,5 +4,9 @@ ENV APPDIR="/home/${RVM_USER}/app"
 
 # include the ruby-version and Gemfile for bundle install
 ADD Gemfile Gemfile.lock jenkins ${APPDIR}/
+
 ENV RUBY_VERSIONS="2.6.6 2.7.2 2.5.8"
+
+ENV LD_LIBRARY_PATH /opt/oracle/instantclient_19_8
+ENV TNS_ADMIN /etc/oracle
 RUN ${APPDIR}/bundle-install-all-versions.sh

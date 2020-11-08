@@ -15,3 +15,9 @@ RUN --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-2.6.6/
     --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-2.5.8/lib/ruby/gems/2.5.0 \
     --mount=type=ssh,uid=999,gid=1000 \
     ${APPDIR}/bundle-install-all-versions.sh
+RUN  rm -r /usr/local/rvm/rubies/ruby-2.6.6/lib/ruby/gems/2.6.0/* \
+  && cp -r /tmp/cache/2.6/* /usr/local/rvm/rubies/ruby-2.6.6/lib/ruby/gems/2.6.0/ \
+  && rm -r /usr/local/rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/* \
+  && cp -r /tmp/cache/2.7/* /usr/local/rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/ \
+  && rm -r /usr/local/rvm/rubies/ruby-2.5.8/lib/ruby/gems/2.5.0/* \
+  && cp -r /tmp/cache/2.5/* /usr/local/rvm/rubies/ruby-2.5.8/lib/ruby/gems/2.5.0/

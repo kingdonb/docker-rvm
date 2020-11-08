@@ -89,6 +89,8 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bcrypt (3.1.16)
+    benchmark (0.1.0)
+    bigdecimal (2.0.0)
     bindex (0.8.1)
     bootsnap (1.5.0)
       msgpack (~> 1.0)
@@ -97,6 +99,7 @@ GEM
       sassc (>= 2.0.0)
     brakeman (4.10.0)
     builder (3.2.4)
+    bundler-unload (1.0.2)
     byebug (11.1.3)
     capistrano (3.14.1)
       airbrussh (>= 1.0.0)
@@ -130,6 +133,7 @@ GEM
       actionpack (>= 3.1)
       caxlsx (>= 3.0)
     certified (1.0.0)
+    cgi (0.1.0)
     childprocess (3.0.0)
     choice (0.2.0)
     chosen-rails (1.9.0)
@@ -169,6 +173,7 @@ GEM
       sort_alphabetical (~> 1.0)
     crack (0.4.4)
     crass (1.0.6)
+    csv (3.1.7)
     csv-diff (0.6.1)
     cucumber (5.2.0)
       builder (~> 3.2, >= 3.2.4)
@@ -208,12 +213,15 @@ GEM
       cucumber-cucumber-expressions (~> 10.3, >= 10.3.0)
       cucumber-messages (~> 13.0, >= 13.0.1)
     database_cleaner (1.8.5)
+    date (3.0.1)
+    delegate (0.1.0)
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    did_you_mean (1.4.0)
     diff-lcs (1.4.4)
     docile (1.3.2)
     domain_name (0.5.20190701)
@@ -232,7 +240,9 @@ GEM
     erubi (1.9.0)
     et-orbi (1.2.4)
       tzinfo
+    etc (1.1.0)
     execjs (2.7.0)
+    executable-hooks (1.6.0)
     factory_bot (6.1.0)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.1.0)
@@ -246,14 +256,18 @@ GEM
     faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
+    fcntl (1.0.0)
     ffi (1.13.1)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    fiddle (1.0.0)
+    fileutils (1.4.1)
     filterrific (5.2.1)
     font-awesome-rails (4.7.0.5)
       railties (>= 3.2, < 6.1)
     formatador (0.2.5)
+    forwardable (1.3.1)
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
@@ -263,10 +277,13 @@ GEM
     fugit (1.4.0)
       et-orbi (~> 1.1, >= 1.1.8)
       raabro (~> 1.4)
+    gdbm (2.1.0)
+    gem-wrappers (1.4.0)
     gene_pool (1.5.0)
       concurrent-ruby (>= 1.0)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
+    getoptlong (0.1.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     guard (2.16.2)
@@ -316,7 +333,11 @@ GEM
     image_processing (1.12.1)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
+    io-console (0.5.6)
     io-like (0.3.1)
+    ipaddr (1.2.2)
+    irb (1.2.7)
+      reline (>= 0.1.5)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
@@ -339,6 +360,7 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    logger (1.4.2)
     lograge (0.11.2)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -353,6 +375,7 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     maskedinput-rails (1.4.1.0)
+    matrix (0.3.0)
     method_source (1.0.0)
     middleware (0.1.0)
     mime-types (3.3.1)
@@ -371,11 +394,15 @@ GEM
     multi_test (0.1.2)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
+    mutex_m (0.1.0)
     nenv (0.3.0)
     net-ldap (0.16.3)
+    net-pop (0.1.0)
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
+    net-smtp (0.1.0)
     net-ssh (6.1.0)
+    net-telnet (0.2.0)
     netaddr (2.0.4)
     netrc (0.11.0)
     newrelic_rpm (6.13.1)
@@ -392,6 +419,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 3)
+    observer (0.1.0)
     oj (3.10.15)
     omniauth (1.9.1)
       hashie (>= 3.4.6)
@@ -402,7 +430,10 @@ GEM
     omniauth-oktaoauth (0.1.6)
       omniauth (~> 1.5)
       omniauth-oauth2 (>= 1.4.0, < 2.0)
+    open3 (0.1.0)
+    openssl (2.2.0)
     orm_adapter (0.5.0)
+    ostruct (0.3.1)
     parallel (1.19.2)
     parser (2.7.2.0)
       ast (~> 2.4.1)
@@ -413,8 +444,10 @@ GEM
       persistent_http (< 2)
     pg (1.2.3)
     pluginator (1.5.0)
+    power_assert (1.2.0)
     pre-commit (0.39.0)
       pluginator (~> 1.5)
+    prime (0.1.0)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
       middleware
@@ -423,6 +456,8 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    pstore (0.1.0)
+    psych (3.2.0)
     public_suffix (4.0.6)
     puma (5.0.4)
       nio4r (~> 2.0)
@@ -430,6 +465,7 @@ GEM
     raabro (1.4.0)
     rabl (0.14.3)
       activesupport (>= 2.3.14)
+    racc (1.5.0)
     rack (2.2.3)
     rack-cas (0.16.1)
       addressable (~> 2.3)
@@ -486,9 +522,14 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rdoc (6.2.1)
+    readline (0.0.2)
+      reline
+    readline-ext (0.1.1)
     redis (4.2.2)
     ref (2.0.0)
     regexp_parser (1.8.2)
+    reline (0.1.7)
+      io-console (~> 0.5)
     request_store (1.5.0)
       rack (>= 1.4)
     responders (3.0.1)
@@ -526,6 +567,8 @@ GEM
     rspec-support (3.10.0)
     rspec_junit_formatter (0.4.1)
       rspec-core (>= 2, < 4, != 2.12.0)
+    rss (0.2.9)
+      rexml
     rubocop (1.2.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
@@ -556,10 +599,15 @@ GEM
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby2_keywords (0.0.2)
+    rubygems-bundler (1.4.5)
+      bundler-unload (>= 1.0.2)
+      executable-hooks (>= 1.5.0)
+    rubygems-update (3.1.4)
     rubyzip (2.3.0)
     rufo (0.12.0)
     rufus-scheduler (3.6.0)
       fugit (~> 1.1, >= 1.1.6)
+    rvm (1.11.3.9)
     safe_yaml (1.0.5)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -593,6 +641,7 @@ GEM
       railties (>= 4.0.0)
     schema_to_scaffold (0.8.0)
       activesupport (>= 3.2.1)
+    sdbm (1.0.0)
     sdoc (2.0.0)
       rdoc (>= 5.0)
     selenium-webdriver (3.142.7)
@@ -613,6 +662,7 @@ GEM
     simplecov-html (0.12.3)
     simpleidn (0.1.1)
       unf (~> 0.1.4)
+    singleton (0.1.0)
     sixarm_ruby_unaccent (1.2.0)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
@@ -640,12 +690,16 @@ GEM
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    stringio (0.1.4)
+    strscan (1.0.3)
     sucker_punch (2.1.2)
       concurrent-ruby (~> 1.0)
     swagger-blocks (3.0.0)
     sys-uname (1.2.2)
       ffi (~> 1.1)
     temple (0.8.2)
+    test-unit (3.3.6)
+      power_assert
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
       ref
@@ -654,6 +708,8 @@ GEM
     tilt (2.0.10)
     timecop (0.9.2)
     timeliness (0.4.4)
+    timeout (0.1.0)
+    tracer (0.1.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -674,6 +730,7 @@ GEM
     unicorn-worker-killer (0.4.4)
       get_process_mem (~> 0)
       unicorn (>= 4, < 6)
+    uri (0.10.0)
     validates_email_format_of (1.6.3)
       i18n
     validates_timeliness (4.1.1)
@@ -700,6 +757,7 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
+    webrick (1.6.1)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -711,11 +769,14 @@ GEM
     will_paginate-foundation (6.2.1)
       will_paginate (>= 3.0.3)
     workflow (2.0.2)
+    xmlrpc (0.3.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yajl-ruby (1.4.1)
+    yaml (0.1.0)
     zip-zip (0.3)
       rubyzip (>= 1.0.0)
+    zlib (1.1.0)
 
 PLATFORMS
   ruby
@@ -745,11 +806,15 @@ DEPENDENCIES
   awesome_print
   axlsx
   axlsx_rails
+  benchmark
+  bigdecimal
   bindex
   bootsnap
   bootstrap-sass
   brakeman
   builder
+  bundler
+  bundler-unload
   byebug
   capistrano
   capistrano-rvm
@@ -758,6 +823,7 @@ DEPENDENCIES
   caxlsx
   caxlsx_rails
   certified
+  cgi
   childprocess
   choice
   chosen-rails
@@ -777,6 +843,7 @@ DEPENDENCIES
   country_select
   crack
   crass
+  csv
   csv-diff
   cucumber
   cucumber-core
@@ -789,7 +856,10 @@ DEPENDENCIES
   cucumber-tag-expressions
   cucumber-wire
   database_cleaner
+  date
+  delegate
   devise
+  did_you_mean
   diff-lcs
   docile
   domain_name
@@ -798,17 +868,26 @@ DEPENDENCIES
   email_address
   email_spec
   erubi
+  etc
   execjs
+  executable-hooks
   factory_bot
   factory_bot_rails
   factory_girl_rails
+  fcntl
   ffi
   ffi-compiler
+  fiddle
+  fileutils
   filterrific
   font-awesome-rails
+  forwardable
   foundation-icons-sass-rails
   foundation-rails (~> 5.4.3.1)
+  gdbm
+  gem-wrappers
   gene_pool
+  getoptlong
   globalid
   guard-rspec
   haml
@@ -824,6 +903,9 @@ DEPENDENCIES
   httpclient
   i18n
   i18n_data
+  io-console
+  ipaddr
+  irb
   jbuilder
   jquery-rails
   jquery-tablesorter
@@ -834,11 +916,13 @@ DEPENDENCIES
   kgio
   launchy
   libv8
+  logger
   lograge
   loofah
   mail
   marcel
   maskedinput-rails
+  matrix
   method_source
   middleware
   mime-types
@@ -851,27 +935,40 @@ DEPENDENCIES
   mocha
   multi_test
   multi_xml
+  mutex_m
   net-ldap
+  net-pop
+  net-smtp
+  net-telnet
   netrc
   newrelic_rpm
   nio4r
   nokogiri
   nori
+  observer
   oj
   omniauth-oktaoauth
+  open3
+  openssl
+  ostruct
   parallel
   parser
   persistent_http
   persistent_httparty
   pg
   pluginator
+  power_assert
   pre-commit
+  prime
   protobuf-cucumber
   pry
+  pstore
+  psych
   public_suffix
   puma
   que
   rabl
+  racc
   rack
   rack-cas
   rack-rewrite
@@ -891,9 +988,13 @@ DEPENDENCIES
   rake
   rb-fsevent
   rb-inotify
+  rdoc
+  readline
+  readline-ext
   redis
   ref
   regexp_parser
+  reline
   responders
   rest-client
   rexml
@@ -905,6 +1006,7 @@ DEPENDENCIES
   rspec-rails
   rspec-support
   rspec_junit_formatter
+  rss
   rubocop
   rubocop-ast
   rubocop-performance
@@ -915,9 +1017,12 @@ DEPENDENCIES
   ruby-odbc
   ruby-plsql
   ruby-progressbar
+  rubygems-bundler
+  rubygems-update
   rubyzip
   rufo
   rufus-scheduler
+  rvm
   safe_yaml
   sass
   sass-listen
@@ -926,6 +1031,7 @@ DEPENDENCIES
   savon
   scenic
   schema_to_scaffold
+  sdbm
   sdoc
   selenium-webdriver
   shoulda-matchers
@@ -933,6 +1039,7 @@ DEPENDENCIES
   silencer
   simplecov
   simplecov-html
+  singleton
   sixarm_ruby_unaccent
   slim
   slim-rails
@@ -942,16 +1049,21 @@ DEPENDENCIES
   sprockets-es6
   sprockets-rails
   sqlite3
+  stringio
+  strscan
   sucker_punch
   swagger-blocks
   sys-uname
   temple
+  test-unit
   therubyracer
   thor
   thread_safe
   tilt
   timecop
   timeliness
+  timeout
+  tracer
   turbolinks
   turbolinks-source
   tzinfo
@@ -963,12 +1075,14 @@ DEPENDENCIES
   unicode_utils
   unicorn
   unicorn-worker-killer
+  uri
   validates_email_format_of
   validates_timeliness
   wash_out
   web-console
   webdrivers
   webpacker
+  webrick
   websocket-driver
   websocket-extensions
   whenever
@@ -976,9 +1090,12 @@ DEPENDENCIES
   will_paginate
   will_paginate-foundation
   workflow
+  xmlrpc
   xpath
   yajl-ruby
+  yaml
   zip-zip
+  zlib
 
 BUNDLED WITH
    2.1.4

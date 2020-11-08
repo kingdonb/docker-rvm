@@ -33,6 +33,7 @@ push: push-tag push-latest
 
 support:
 	$(MAKE) -C docker-rvm-support supported
+	$(MAKE) -C docker-rvm-supported all
 
 unsupported:
 	$(MAKE) -C docker-rvm-support unsupported

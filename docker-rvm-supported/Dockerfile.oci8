@@ -1,0 +1,8 @@
+FROM kingdonb/docker-rvm-support:20201108-oci8
+LABEL maintainer="Kingdon Barrett <kingdon.b@nd.edu>"
+ENV APPDIR="/home/${RVM_USER}/app"
+
+# include the ruby-version and Gemfile for bundle install
+ADD Gemfile Gemfile.lock jenkins ${APPDIR}/
+ENV RUBY_VERSIONS="${RVM_RUBY_VERSIONS}"
+RUN ./jenkins/bundle-install-all-versions.sh

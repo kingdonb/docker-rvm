@@ -1,8 +1,23 @@
+# syntax = docker/dockerfile:experimental
 FROM kingdonb/docker-rvm-support:20201108-oci8
 LABEL maintainer="Kingdon Barrett <kingdon.b@nd.edu>"
 ENV APPDIR="/home/${RVM_USER}/app"
 
 # include the ruby-version and Gemfile for bundle install
 ADD Gemfile Gemfile.lock jenkins ${APPDIR}/
-ENV RUBY_VERSIONS="${RVM_RUBY_VERSIONS}"
-RUN ${APPDIR}/bundle-install-all-versions.sh
+
+ENV RUBY_VERSIONS="2.6.6 2.7.2 2.5.8"
+
+ENV LD_LIBRARY_PATH /opt/oracle/instantclient_19_8
+ENV TNS_ADMIN /etc/oracle
+RUN --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-2.6.6/lib/ruby/gems/2.6.0 \
+    --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0 \
+    --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-2.5.8/lib/ruby/gems/2.5.0 \
+    --mount=type=ssh,uid=999,gid=1000 \
+    ${APPDIR}/bundle-install-all-versions.sh
+RUN  rm -r /usr/local/rvm/rubies/ruby-2.6.6/lib/ruby/gems/2.6.0/* \
+  && cp -r /tmp/cache/2.6/* /usr/local/rvm/rubies/ruby-2.6.6/lib/ruby/gems/2.6.0/ \
+  && rm -r /usr/local/rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/* \
+  && cp -r /tmp/cache/2.7/* /usr/local/rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0/ \
+  && rm -r /usr/local/rvm/rubies/ruby-2.5.8/lib/ruby/gems/2.5.0/* \
+  && cp -r /tmp/cache/2.5/* /usr/local/rvm/rubies/ruby-2.5.8/lib/ruby/gems/2.5.0/

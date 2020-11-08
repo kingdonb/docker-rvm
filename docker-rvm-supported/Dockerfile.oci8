@@ -1,3 +1,4 @@
+# syntax = docker/dockerfile:experimental
 FROM kingdonb/docker-rvm-support:20201108-oci8
 LABEL maintainer="Kingdon Barrett <kingdon.b@nd.edu>"
 ENV APPDIR="/home/${RVM_USER}/app"
@@ -9,4 +10,8 @@ ENV RUBY_VERSIONS="2.6.6 2.7.2 2.5.8"
 
 ENV LD_LIBRARY_PATH /opt/oracle/instantclient_19_8
 ENV TNS_ADMIN /etc/oracle
-RUN ${APPDIR}/bundle-install-all-versions.sh
+RUN --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-2.6.6/lib/ruby/gems/2.6.0 \
+    --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-2.7.2/lib/ruby/gems/2.7.0 \
+    --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-2.5.8/lib/ruby/gems/2.5.0 \
+    --mount=type=ssh,uid=999,gid=1000 \
+    ${APPDIR}/bundle-install-all-versions.sh

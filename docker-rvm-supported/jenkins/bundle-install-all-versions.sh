@@ -12,6 +12,8 @@ for ver in $RUBY_VERSIONS; do
   bundle clean --force
 done
 
+set -euo pipefail
+
 for ver in $RUBY_VERSIONS; do
   SHORT_VER=${ver%.*}
   mkdir -p /tmp/cache/$SHORT_VER

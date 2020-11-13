@@ -6,12 +6,11 @@ echo 'gem: --no-document' > ~/.gemrc
 for ver in $RUBY_VERSIONS; do
   rvm $ver@global
 
-  rvm $ver@global do gem update --system
-  rvm $ver@global do gem update bundler
-  rvm $ver@global do gem list
+  gem update --system
+  gem update bundler || gem install bundler --force
 
-  rvm $ver@global do bundle install
-  rvm $ver@global do bundle clean --force
+  bundle install
+  bundle clean --force
 done
 
 set -euo pipefail

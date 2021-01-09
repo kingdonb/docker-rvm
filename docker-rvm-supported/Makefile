@@ -1,4 +1,4 @@
-.PHONY: all push-release build build-release push-tag push-latest update
+.PHONY: all push-release build build-release push-tag push-latest update shell
 
 GIT_SHA_TAG := $(shell git rev-parse --short=8 HEAD)
 
@@ -23,3 +23,9 @@ update:
 		--rm --name rvm-support-updater -it \
 		kingdonb/docker-rvm-support:latest-oci8 \
 		bash --login -c 'LD_LIBRARY_PATH=/opt/oracle/instantclient_19_8 rvm 2.7.2 do bundle update'
+
+shell:
+	docker run -u rvm -v $(shell pwd):/home/rvm/app \
+		--rm --name rvm-support-updater -it \
+		kingdonb/rvm-supported:latest \
+		bash --login

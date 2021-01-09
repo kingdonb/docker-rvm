@@ -10,7 +10,7 @@ for ver in $RUBY_VERSIONS; do
   gem update bundler || gem install bundler --force
 
   bundle install
-  bundle clean --force
+  # bundle clean --force
 done
 
 set -euo pipefail

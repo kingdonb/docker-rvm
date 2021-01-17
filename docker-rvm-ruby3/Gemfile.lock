@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 9cc99d70c991b586ec9e74fbc391b599eba37bb8
+  revision: fc0d3c4dd97c0fe50f97ed9a696ee8dc47d92a2b
   branch: 6-1-stable
   specs:
     actioncable (6.1.1)
@@ -109,7 +109,7 @@ GEM
     ffi (1.14.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    hotwire-rails (0.1.2)
+    hotwire-rails (0.1.3)
       rails (>= 6.0.0)
       stimulus-rails
       turbo-rails
@@ -117,10 +117,10 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
-    listen (3.4.0)
+    listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.8.0)
+    loofah (2.9.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -176,11 +176,11 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    stimulus-rails (0.1.2)
+    stimulus-rails (0.1.4)
       rails (>= 6.0.0)
     thor (1.0.1)
     tilt (2.0.10)
-    turbo-rails (0.5.3)
+    turbo-rails (0.5.7)
       rails (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)

@@ -1,4 +1,4 @@
-ARG RVM_RUBY_VERSIONS="2.6.6 2.7.2 2.5.8 3.0.0"
+ARG RVM_RUBY_VERSIONS="3.0.0"
 FROM kingdonb/docker-rvm:20210117
 LABEL maintainer="Kingdon Barrett <kingdon.b@nd.edu>"
 ENV APPDIR="/home/${RVM_USER}/app"
@@ -17,32 +17,17 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get update && apt-get install -y --no-install-recommends \
   build-essential nodejs \
-  tzdata libpq-dev unzip libaio1 && apt-get clean && rm -rf /var/lib/apt/lists/*
+  tzdata libpq-dev && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN echo "America/New_York" > /etc/timezone
 RUN unlink /etc/localtime
 RUN dpkg-reconfigure -f noninteractive tzdata
-
-COPY ora-support/*-19.8.*.zip /
-COPY ora-support/tns /etc/oracle
-RUN set -ex \
-  && mkdir -p /opt/oracle \
-  && cd /opt/oracle \
-  && unzip /instantclient-basiclite-linux.x64-19.8.0.0.0dbru.zip \
-  && unzip /instantclient-sdk-linux.x64-19.8.0.0.0dbru.zip \
-  && unzip /instantclient-sqlplus-linux.x64-19.8.0.0.0dbru.zip \
-  && cd /opt/oracle/instantclient_19_8 # \
-  # && ln -s libclntsh.so.19.1 libclntsh.so
-
-ENV LD_LIBRARY_PATH /opt/oracle/instantclient_19_8
-ENV TNS_ADMIN /etc/oracle
-# ENV HOME "/home/${RVM_USER}"
 
 # put an app dir in place and ensure the user can manage it without escalation
 RUN mkdir ${APPDIR}
 WORKDIR ${APPDIR}
 
 RUN chown ${RVM_USER} ${APPDIR}
-ADD my_init /usr/bin/my_init
+ADD my_init /sbin/my_init
 RUN mkdir -p /etc/my_init.d ; \
   mkdir -p /etc/my_init.pre_shutdown.d ; \
   mkdir -p /etc/my_init.post_shutdown.d ; \

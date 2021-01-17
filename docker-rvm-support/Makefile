@@ -1,4 +1,4 @@
-.PHONY: build tag-latest push-tag push-latest push
+.PHONY: build tag-latest push-tag push-latest push build-push-ruby3
 .PHONY: build-release push-release release push-unsupported-release build-oci8
 .PHONY: build-unsupported tag-latest-unsupported push-tag-unsupported push-latest-unsupported
 .PHONY: build-release-oci8 build-unsupported-oci8 push-all-oci8 unsupported
@@ -25,6 +25,12 @@ build-oci8: build-release-oci8 build-unsupported-oci8
 push-release: push-tag push-latest
 
 push-unsupported-release: push-tag-unsupported push-latest-unsupported
+
+build-push-ruby3:
+	docker build -f Dockerfile.ruby3 -t kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-ruby3 .
+	docker tag kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-ruby3 kingdonb/docker-rvm-support:latest-ruby3
+	docker push kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-ruby3
+	docker push kingdonb/docker-rvm-support:latest-ruby3
 
 build:
 	docker build -t kingdonb/docker-rvm-support:latest .

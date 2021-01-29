@@ -1,11 +1,11 @@
 ARG RVM_RUBY_VERSIONS="3.0.0"
-FROM kingdonb/docker-rvm:20210117
+FROM kingdonb/docker-rvm:20210129
 LABEL maintainer="Kingdon Barrett <kingdon.b@nd.edu>"
 ENV APPDIR="/home/${RVM_USER}/app"
 
 # install manpages and a little vim because I might need them
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  manpages vim-tiny runit python3 && apt-get clean && rm -rf /var/lib/apt/lists/*
+  manpages vim-tiny && apt-get clean && rm -rf /var/lib/apt/lists/*
 # make sure the base is upgraded, so downstream images don't have to do it
 RUN apt-get update && apt-get upgrade -y --no-install-recommends \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -16,7 +16,7 @@ RUN echo 'gem: --no-document' > /root/.gemrc && bash --login -c 'gem update'
 ENV DEBIAN_FRONTEND=noninteractive
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  build-essential nodejs \
+  build-essential nodejs cmake pkg-config \
   tzdata libpq-dev && apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN echo "America/New_York" > /etc/timezone
 RUN unlink /etc/localtime
@@ -27,18 +27,18 @@ RUN mkdir ${APPDIR}
 WORKDIR ${APPDIR}
 
 RUN chown ${RVM_USER} ${APPDIR}
-ADD my_init /sbin/my_init
-RUN mkdir -p /etc/my_init.d ; \
-  mkdir -p /etc/my_init.pre_shutdown.d ; \
-  mkdir -p /etc/my_init.post_shutdown.d ; \
-  mkdir -p /etc/container_environment ; \
-  touch /etc/container_environment.sh ; \
-  touch /etc/container_environment.json ; \
-  chmod 700 /etc/container_environment ; \
-    groupadd -g 8377 docker_env ; \
-    chown :docker_env /etc/container_environment.sh /etc/container_environment.json ; \
-    chmod 640 /etc/container_environment.sh /etc/container_environment.json ; \
-    ln -s /etc/container_environment.sh /etc/profile.d/
+# ADD my_init /sbin/my_init
+# RUN mkdir -p /etc/my_init.d ; \
+#   mkdir -p /etc/my_init.pre_shutdown.d ; \
+#   mkdir -p /etc/my_init.post_shutdown.d ; \
+#   mkdir -p /etc/container_environment ; \
+#   touch /etc/container_environment.sh ; \
+#   touch /etc/container_environment.json ; \
+#   chmod 700 /etc/container_environment ; \
+#     groupadd -g 8377 docker_env ; \
+#     chown :docker_env /etc/container_environment.sh /etc/container_environment.json ; \
+#     chmod 640 /etc/container_environment.sh /etc/container_environment.json ; \
+#     ln -s /etc/container_environment.sh /etc/profile.d/
 USER ${RVM_USER}
 RUN  bash --login -c 'curl -o- -L https://yarnpkg.com/install.sh | bash'
 # USER root

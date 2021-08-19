@@ -3,7 +3,7 @@
 
 ISO_DATE_TAG := $(shell date +%Y%m%d)
 
-all: build push support # ruby3
+all: build push support ruby3
 
 legacy: build-legacy push-legacy unsupported
 
@@ -36,8 +36,6 @@ push: push-tag push-latest
 support:
 	$(MAKE) -C docker-rvm-support supported
 	$(MAKE) -C docker-rvm-supported all
-	$(MAKE) -C docker-rvm-support build-push-ruby3
-	$(MAKE) -C docker-rvm-ruby3
 
 ruby3:
 	$(MAKE) -C docker-rvm-support build-push-ruby3

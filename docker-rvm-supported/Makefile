@@ -7,7 +7,7 @@ all: build build-release push-latest push-tag
 push-release: push-tag push-latest
 
 build:
-	docker image build --squash -f Dockerfile.oci8 -t kingdonb/rvm-supported:$(GIT_SHA_TAG) .
+	docker image build --squash -f Dockerfile -t kingdonb/rvm-supported:$(GIT_SHA_TAG) .
 
 build-release:
 	docker tag kingdonb/rvm-supported:$(GIT_SHA_TAG) kingdonb/rvm-supported:latest
@@ -21,8 +21,8 @@ push-latest: build-release
 update:
 	docker run -u rvm -v $(shell pwd):/home/rvm/app \
 		--rm --name rvm-support-updater -it \
-		kingdonb/docker-rvm-support:latest-oci8 \
-		bash --login -c 'LD_LIBRARY_PATH=/opt/oracle/instantclient_19_8 rvm 2.7.2 do bundle update'
+		kingdonb/docker-rvm-support:latest \
+		bash --login -c 'rvm 2.7.4 do bundle update'
 
 shell:
 	docker run -u rvm -v $(shell pwd):/home/rvm/app \

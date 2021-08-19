@@ -3,7 +3,7 @@
 
 ISO_DATE_TAG := $(shell date +%Y%m%d)
 
-all: build push ruby3 #support
+all: build push ruby3 support
 
 legacy: build-legacy push-legacy unsupported
 

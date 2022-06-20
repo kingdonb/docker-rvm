@@ -1,6 +1,6 @@
-ARG RVM_RUBY_VERSIONS="2.7.4 2.6.8 3.0.2"
-FROM kingdonb/docker-rvm:20210819
-LABEL maintainer="Kingdon Barrett <kingdon.b@nd.edu>"
+ARG RVM_RUBY_VERSIONS="2.7.6 2.6.10 3.0.4"
+FROM kingdonb/docker-rvm:20220620
+LABEL maintainer="Kingdon Barrett <kingdon@weave.works>"
 ENV APPDIR="/home/${RVM_USER}/app"
 
 # install manpages and a little vim because I might need them

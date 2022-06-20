@@ -27,19 +27,20 @@ push-release: push-tag push-latest
 push-unsupported-release: push-tag-unsupported push-latest-unsupported
 
 build-push-ruby3:
-	docker build -f Dockerfile.ruby3 -t kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-ruby3 .
+	docker build --push -f Dockerfile.ruby3 -t kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-ruby3 .
+	docker pull kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-ruby3
 	docker tag kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-ruby3 kingdonb/docker-rvm-support:latest-ruby3
 	docker push kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-ruby3
 	docker push kingdonb/docker-rvm-support:latest-ruby3
 
 build:
-	docker build -t kingdonb/docker-rvm-support:latest .
+	docker build --push -t kingdonb/docker-rvm-support:latest .
 
 build-release:
-	docker build -t kingdonb/docker-rvm-support:$(ISO_DATE_TAG) .
+	docker build --push -t kingdonb/docker-rvm-support:$(ISO_DATE_TAG) .
 
 build-release-oci8:
-	docker build -f Dockerfile.oci8 -t kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-oci8 .
+	docker build --push -f Dockerfile.oci8 -t kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-oci8 .
 
 build-unsupported:
 	docker build -f Dockerfile.unsupported -t kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-unsupported .
@@ -55,6 +56,8 @@ push-oci8-unsupported:
 	docker push kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-oci8-unsupported
 
 tag-latest: build
+	docker pull kingdonb/docker-rvm-support:$(ISO_DATE_TAG)
+	docker pull kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-oci8
 	docker tag kingdonb/docker-rvm-support:$(ISO_DATE_TAG) kingdonb/docker-rvm-support:latest
 	docker tag kingdonb/docker-rvm-support:$(ISO_DATE_TAG)-oci8 kingdonb/docker-rvm-support:latest-oci8
 

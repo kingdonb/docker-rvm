@@ -16,13 +16,14 @@ push-legacy: build-legacy
 	docker push kingdonb/docker-rvm:$(ISO_DATE_TAG)-legacy
 
 build:
-	docker build --no-cache -t kingdonb/docker-rvm:$(ISO_DATE_TAG) .
+	docker build --push --no-cache -t kingdonb/docker-rvm:$(ISO_DATE_TAG) .
 
 check:
 	docker pull yebyen/docker-rvm:test
 	docker build -f docker-rvm-test/Dockerfile.check -t yebyen/docker-rvm:check .
 
 tag-latest: build
+	docker pull kingdonb/docker-rvm:$(ISO_DATE_TAG)
 	docker tag kingdonb/docker-rvm:$(ISO_DATE_TAG) kingdonb/docker-rvm:latest
 
 push-tag: build

@@ -7,9 +7,10 @@ all: build build-release push-latest push-tag
 push-release: push-tag push-latest
 
 build:
-	docker image build --squash -t kingdonb/rvm-ruby3:$(GIT_SHA_TAG) .
+	docker image build --push --squash -t kingdonb/rvm-ruby3:$(GIT_SHA_TAG) .
 
 build-release:
+	docker pull kingdonb/rvm-ruby3:$(GIT_SHA_TAG)
 	docker tag kingdonb/rvm-ruby3:$(GIT_SHA_TAG) kingdonb/rvm-ruby3:latest
 
 push-tag:

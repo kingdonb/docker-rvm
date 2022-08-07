@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:experimental
-FROM kingdonb/docker-rvm-support:20220729
+FROM kingdonb/docker-rvm-support:20220807
 LABEL maintainer="Kingdon Barrett <kingdon@weave.works>"
 ENV APPDIR="/home/${RVM_USER}/app"
 

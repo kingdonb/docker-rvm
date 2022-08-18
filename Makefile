@@ -33,6 +33,19 @@ push-tag: build
 push-latest: tag-latest
 	docker push kingdonb/docker-rvm:latest
 
+NEXT_TAG?=$(ISO_DATE_TAG)
+VERSION:=$(shell grep 'VERSION' .latest-release | awk '{ print $$3 }' | tr -d "'")
+version-set:
+	@next="$(NEXT_TAG)" && \
+	current="$(VERSION)" && \
+	/usr/bin/sed -i'' "s/$$current/$$next/g" .latest-release && \
+	/usr/bin/sed -i'' "s/:$$current/:$$next/g" docker-rvm-support/Dockerfile && \
+	/usr/bin/sed -i'' "s/:$$current/:$$next/g" docker-rvm-support/Dockerfile.oci8 && \
+	/usr/bin/sed -i'' "s/:$$current/:$$next/g" docker-rvm-support/Dockerfile.ruby3 && \
+	/usr/bin/sed -i'' "s/:$$current-ruby3/:$$next-ruby3/g" docker-rvm-ruby3/Dockerfile && \
+	/usr/bin/sed -i'' "s/:$$current/:$$next/g" docker-rvm-supported/Dockerfile && \
+	echo "Version $$next set in .latest-release and Dockerfiles"
+
 push: push-tag push-latest
 
 support:

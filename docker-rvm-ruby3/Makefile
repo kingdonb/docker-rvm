@@ -23,7 +23,7 @@ update:
 	docker run -u rvm -v $(shell pwd):/home/rvm/app \
 		--rm --name rvm-support-updater -it \
 		kingdonb/docker-rvm-support:latest-ruby3 \
-		bash --login -c 'rvm 3.1.2 do bundle update'
+		bash --login -c 'rvm 3.1.3 do bundle update'
 
 shell:
 	docker run -u rvm -v $(shell pwd):/home/rvm/app \

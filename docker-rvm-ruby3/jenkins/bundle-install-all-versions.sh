@@ -6,6 +6,7 @@ echo 'gem: --no-document' > ~/.gemrc
 for ver in $RUBY_VERSIONS; do
   rvm $ver@global
 
+  gem install bundler --conservative
   gem update --system
   gem update bundler || gem install bundler --force
 

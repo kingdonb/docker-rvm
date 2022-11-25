@@ -9,9 +9,9 @@ ADD jenkins/bundle-install-all-versions.sh ${APPDIR}/jenkins/
 
 ENV RUBY_VERSIONS="3.0.5 3.1.3"
 
-# USER root
-# RUN chown 999 -R /usr/local/rvm/rubies/
-# USER 999
+USER root
+RUN chown 999 -R /usr/local/rvm/rubies/ ${APPDIR}
+USER 999
 
 RUN --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-3.0.5/lib/ruby/gems/3.0.0 \
     --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-3.1.3/lib/ruby/gems/3.1.0 \

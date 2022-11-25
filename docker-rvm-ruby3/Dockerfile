@@ -13,6 +13,11 @@ RUN --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-3.0.5/
     --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-3.1.3/lib/ruby/gems/3.1.0 \
     --mount=type=ssh,uid=999,gid=1000 \
     ${APPDIR}/jenkins/bundle-install-all-versions.sh
+
+USER root
+RUN chown 999 -R /usr/local/rvm/rubies/
+USER 999
+
 RUN  rm -r /usr/local/rvm/rubies/ruby-3.0.5/lib/ruby/gems/3.0.0/* \
   && cp -r /tmp/cache/3.0/* /usr/local/rvm/rubies/ruby-3.0.5/lib/ruby/gems/3.0.0/
   # && rm -r /tmp/cache # \

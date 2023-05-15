@@ -1,5 +1,5 @@
 ARG RVM_RUBY_VERSIONS="2.7.7 2.6.10 3.0.6"
-FROM kingdonb/docker-rvm:20230220
+FROM kingdonb/docker-rvm:20230515
 LABEL maintainer="Kingdon Barrett <kingdon@weave.works>"
 ENV APPDIR="/home/${RVM_USER}/app"
 

@@ -287,8 +287,5 @@ DEPENDENCIES
   rails (~> 6.1)
   rspec-rails (~> 6.0.0)
 
-RUBY VERSION
-   ruby 3.0.5p211
-
 BUNDLED WITH
    2.3.26

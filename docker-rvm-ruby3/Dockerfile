@@ -33,6 +33,6 @@ RUN  rm -r /usr/local/rvm/rubies/ruby-3.2.2/lib/ruby/gems/3.2.0/* \
   && rm -r /tmp/cache # \
 #  && rm -r /usr/local/rvm/rubies/ruby-3.0.5/lib/ruby/gems/3.0.0/bundler/gems/rails-a1d35aecc6e2
 RUN  rm -r /usr/local/rvm/rubies/ruby-3.3.3/lib/ruby/gems/3.3.0/* \
-  && cp -r /tmp/cache/3.3/* /usr/local/rvm/rubies/ruby-3.3.0/lib/ruby/gems/3.2.0/ \
+  && cp -r /tmp/cache/3.3/* /usr/local/rvm/rubies/ruby-3.3.0/lib/ruby/gems/3.3.0/ \
   && rm -r /tmp/cache # \
 #  && rm -r /usr/local/rvm/rubies/ruby-3.0.5/lib/ruby/gems/3.0.0/bundler/gems/rails-a1d35aecc6e2

@@ -21,18 +21,18 @@ RUN --mount=type=cache,uid=999,gid=1000,target=/usr/local/rvm/rubies/ruby-3.0.6/
     ${APPDIR}/jenkins/bundle-install-all-versions.sh
 
 RUN  rm -r /usr/local/rvm/rubies/ruby-3.0.6/lib/ruby/gems/3.0.0/* \
+  && cp -r /tmp/cache/3.0/* /usr/local/rvm/rubies/ruby-3.0.6/lib/ruby/gems/3.0.0/ \
   && rm -r /tmp/cache # \
-  # && cp -r /tmp/cache/3.0/* /usr/local/rvm/rubies/ruby-3.0.6/lib/ruby/gems/3.0.0/ \
 #  && rm -r /usr/local/rvm/rubies/ruby-3.0.5/lib/ruby/gems/3.0.0/bundler/gems/rails-a1d35aecc6e2
 RUN  rm -r /usr/local/rvm/rubies/ruby-3.1.4/lib/ruby/gems/3.1.0/* \
+  && cp -r /tmp/cache/3.1/* /usr/local/rvm/rubies/ruby-3.1.4/lib/ruby/gems/3.1.0/ \
   && rm -r /tmp/cache # \
-  # && cp -r /tmp/cache/3.1/* /usr/local/rvm/rubies/ruby-3.1.4/lib/ruby/gems/3.1.0/ \
 #  && rm -r /usr/local/rvm/rubies/ruby-3.0.5/lib/ruby/gems/3.0.0/bundler/gems/rails-a1d35aecc6e2
 RUN  rm -r /usr/local/rvm/rubies/ruby-3.2.2/lib/ruby/gems/3.2.0/* \
+  && cp -r /tmp/cache/3.2/* /usr/local/rvm/rubies/ruby-3.2.2/lib/ruby/gems/3.2.0/ \
   && rm -r /tmp/cache # \
-  # && cp -r /tmp/cache/3.2/* /usr/local/rvm/rubies/ruby-3.2.2/lib/ruby/gems/3.2.0/ \
 #  && rm -r /usr/local/rvm/rubies/ruby-3.0.5/lib/ruby/gems/3.0.0/bundler/gems/rails-a1d35aecc6e2
 RUN  rm -r /usr/local/rvm/rubies/ruby-3.3.0/lib/ruby/gems/3.3.0/* \
+  && cp -r /tmp/cache/3.3/* /usr/local/rvm/rubies/ruby-3.3.0/lib/ruby/gems/3.3.0/ \
   && rm -r /tmp/cache # \
-  # && cp -r /tmp/cache/3.3/* /usr/local/rvm/rubies/ruby-3.3.0/lib/ruby/gems/3.3.0/ \
 #  && rm -r /usr/local/rvm/rubies/ruby-3.0.5/lib/ruby/gems/3.0.0/bundler/gems/rails-a1d35aecc6e2

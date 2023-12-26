@@ -20,5 +20,5 @@ set -x
 for ver in $RUBY_VERSIONS; do
   SHORT_VER=${ver%.*}
   mkdir -p /tmp/cache/$SHORT_VER
-  # cp -r /usr/local/rvm/rubies/ruby-$ver/lib/ruby/gems/$SHORT_VER.0/* /tmp/cache/$SHORT_VER/
+  cp -r /usr/local/rvm/rubies/ruby-$ver/lib/ruby/gems/$SHORT_VER.0/* /tmp/cache/$SHORT_VER/
 done

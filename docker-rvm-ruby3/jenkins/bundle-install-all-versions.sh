@@ -4,7 +4,7 @@ source /etc/profile.d/rvm.sh
 echo 'gem: --no-document' > ~/.gemrc
 
 for ver in $RUBY_VERSIONS; do
-  rvm $ver@global
+  rvm $ver@global || rvm gemset create global
 
   gem install bundler --conservative
   gem update --system

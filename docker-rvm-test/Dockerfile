@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   build-essential nodejs \
   tzdata libpq-dev \
   && apt-get upgrade -y --no-install-recommends \
-  && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
+  && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
   && bash --login -c 'curl -o- -L https://yarnpkg.com/install.sh | bash' \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 

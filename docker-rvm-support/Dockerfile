@@ -14,7 +14,7 @@ RUN echo 'gem: --no-document' > /root/.gemrc && bash --login -c 'gem update'
 
 # set the time zone
 ENV DEBIAN_FRONTEND=noninteractive
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN apt-get update && apt-get install -y --no-install-recommends \
   build-essential nodejs \
   tzdata libpq-dev && apt-get clean && rm -rf /var/lib/apt/lists/*

@@ -2,6 +2,10 @@
 
 Docker base image for [RVM (Ruby Version Manager)](https://rvm.io).
 
+Forked from [ms-ati/docker-rvm](https://github.com/ms-ati/docker-rvm), to be
+used in the [kingdon-ci](https://github.com/kingdon-ci) org (with Kingdon
+Barrett's personal projects.)
+
 ## Usage
 
 ### Example Dockerfiles
